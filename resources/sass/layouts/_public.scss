@@ -1,0 +1,40 @@
+@use '../base/variables' as *;
+
+.container {
+  max-width: $bp-desktop;
+  margin: 0 auto;
+  padding-inline: $space-8;
+
+  @media (max-width: $bp-tablet) {
+    padding-inline: $space-3;
+  }
+}
+
+.section {
+  padding-block: $space-12;
+
+  @media (max-width: $bp-tablet) {
+    padding-block: $space-6;
+  }
+}
+
+.section-header {
+  margin-bottom: $space-6;
+  max-width: 640px;
+}
+
+// Grille de fond "blueprint" — signature visuelle de la maquette
+body.layout-public {
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.page-content {
+  max-width: 720px;
+
+  p { margin-bottom: $space-2; }
+  h2 { margin-top: $space-4; margin-bottom: $space-2; }
+  ul, ol { margin-left: $space-3; margin-bottom: $space-2; }
+}

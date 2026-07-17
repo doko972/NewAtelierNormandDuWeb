@@ -1,0 +1,10 @@
+@use '../base/variables' as *;
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $fs-sm;
+
+  th, td { text-align: left; padding: $space-2; border-bottom: 1px solid var(--line); }
+  th { font-family: $font-mono; font-size: $fs-xs; text-transform: uppercase; color: var(--muted); }
+}

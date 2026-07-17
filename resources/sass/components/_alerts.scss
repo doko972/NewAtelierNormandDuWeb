@@ -1,0 +1,13 @@
+@use '../base/variables' as *;
+
+.alert {
+  padding: $space-2 $space-3;
+  border-radius: $radius-sm;
+  border: 1px solid var(--line);
+  font-size: $fs-sm;
+  margin-bottom: $space-3;
+}
+
+.alert-success { border-color: #3ed6a0; color: #3ed6a0; }
+.alert-error   { border-color: #e05a4e; color: #e05a4e; }
+.alert-info    { border-color: var(--blue); color: var(--blue); }

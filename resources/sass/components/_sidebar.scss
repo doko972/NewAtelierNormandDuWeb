@@ -1,0 +1,21 @@
+@use '../base/variables' as *;
+
+.sidebar {
+  background: var(--bg-alt);
+  border-right: 1px solid var(--line);
+  padding: $space-4 $space-3;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: $space-1 $space-2;
+  border-radius: $radius-sm;
+  color: var(--muted);
+  font-size: $fs-sm;
+  margin-bottom: 4px;
+
+  &:hover, &.is-active {
+    background: var(--surface);
+    color: var(--text);
+  }
+}

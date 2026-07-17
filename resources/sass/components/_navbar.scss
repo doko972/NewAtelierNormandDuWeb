@@ -1,0 +1,55 @@
+@use '../base/variables' as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-3 $space-8;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+
+  @media (max-width: $bp-tablet) {
+    padding: $space-2 $space-3;
+  }
+}
+
+.navbar-logo {
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: $fs-lg;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+
+  @media (max-width: $bp-tablet) {
+    display: none;
+
+    &.navbar-links--open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--line);
+      padding: $space-3;
+    }
+  }
+}
+
+.navbar-links a {
+  color: var(--muted);
+  font-size: $fs-sm;
+  font-weight: 500;
+
+  &:hover, &.is-active { color: var(--text); }
+}
+
+.navbar-burger {
+  display: none;
+  @media (max-width: $bp-tablet) { display: block; }
+}

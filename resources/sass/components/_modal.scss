@@ -1,0 +1,20 @@
+@use '../base/variables' as *;
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal {
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: $radius-lg;
+  padding: $space-4;
+  max-width: 480px;
+  width: 90%;
+}

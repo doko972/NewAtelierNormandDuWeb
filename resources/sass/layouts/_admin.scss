@@ -1,0 +1,16 @@
+@use '../base/variables' as *;
+
+.layout-admin {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+
+  @media (max-width: $bp-tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-main {
+  padding: $space-4;
+  background: var(--bg);
+}

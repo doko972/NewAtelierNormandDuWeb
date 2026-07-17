@@ -1,0 +1,151 @@
+@use '../base/variables' as *;
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: $space-4;
+  padding: $space-12 $space-8;
+  align-items: center;
+  max-width: $bp-desktop;
+  margin: 0 auto;
+
+  @media (max-width: $bp-tablet) {
+    grid-template-columns: 1fr;
+    padding: $space-6 $space-3;
+  }
+}
+
+.hero-eyebrow {
+  font-family: $font-mono;
+  font-size: $fs-xs;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: $space-3;
+
+  &::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: var(--blue);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(76, 141, 255, 0.18);
+  }
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--copper);
+}
+
+.hero .sub {
+  font-size: $fs-base;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 460px;
+  margin-bottom: $space-4;
+}
+
+.cta-row { display: flex; gap: $space-2; margin-bottom: $space-6; flex-wrap: wrap; }
+
+.stats { display: flex; gap: $space-4; flex-wrap: wrap; }
+.stat b { display: block; font-family: $font-display; font-size: $fs-xl; font-weight: 700; }
+.stat span { font-size: $fs-xs; color: var(--muted); }
+
+// Schéma d'automatisation
+.schema {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: $radius-lg;
+  padding: $space-4;
+}
+
+.schema-label {
+  font-family: $font-mono;
+  font-size: $fs-xs;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: $space-3;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: $radius-md;
+  position: relative;
+  z-index: 2;
+}
+
+.node-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.node-dot.copper { background: var(--copper); }
+.node-dot.blue { background: var(--blue); }
+.node-text b { display: block; font-size: $fs-sm; font-weight: 600; }
+.node-text span { font-size: $fs-xs; color: var(--muted); }
+
+.connector { width: 1px; height: 28px; background: var(--line); margin-left: 32px; position: relative; overflow: visible; }
+.pulse { width: 5px; height: 5px; border-radius: 50%; background: var(--copper); position: absolute; left: -2px; animation: travel 2.2s infinite; }
+.connector.b .pulse { background: var(--blue); animation-delay: 0.7s; }
+.connector.c .pulse { background: var(--copper); animation-delay: 1.4s; }
+
+@keyframes travel {
+  0% { top: 0; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+// Bande piliers
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  @media (max-width: $bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pillar { background: var(--bg); padding: $space-4 $space-3; }
+.pillar.open { background: var(--bg-alt); }
+.pillar.open .tag { color: var(--blue); }
+.pillar .tag { font-family: $font-mono; font-size: $fs-xs; color: var(--copper); display: block; margin-bottom: $space-2; }
+.pillar b { font-family: $font-display; font-size: $fs-base; display: block; margin-bottom: 8px; }
+.pillar span { font-size: $fs-sm; color: var(--muted); line-height: 1.5; }
+
+// Comparatif
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: $space-3; @media (max-width: $bp-tablet) { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid var(--line); border-radius: $radius-lg; padding: $space-4; }
+.compare-col.no { background: var(--bg-alt); }
+.compare-col.yes { background: var(--surface); border-color: var(--copper); }
+.compare-col h3 { font-family: $font-display; font-size: $fs-base; margin-bottom: $space-3; color: var(--muted); }
+.compare-col.yes h3 { color: var(--copper); }
+.compare-col li { display: flex; gap: $space-2; font-size: $fs-sm; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.compare-col li:last-child { border-bottom: none; }
+.mark { font-weight: 700; flex-shrink: 0; width: 16px; }
+.compare-col.no .mark { color: #8a5a4a; }
+.compare-col.yes .mark { color: var(--copper); }
+
+// Services (page d'accueil)
+.service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: $space-3; @media (max-width: $bp-tablet) { grid-template-columns: 1fr; } }
+
+// Process
+.process-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: $space-3; @media (max-width: $bp-tablet) { grid-template-columns: 1fr 1fr; } }
+.process-step .num { font-family: $font-mono; font-size: $fs-sm; color: var(--copper); margin-bottom: $space-2; display: block; }
+.process-step h3 { font-family: $font-display; font-size: $fs-base; margin-bottom: 10px; }
+.process-step p { font-size: $fs-sm; color: var(--muted); line-height: 1.6; }
+
+// CTA finale
+.cta-final { text-align: center; background: var(--surface); border-radius: $radius-lg; padding: $space-8 $space-4; }
+.cta-final h2 { margin: 0 auto $space-2; max-width: 560px; }
+.cta-final p { color: var(--muted); font-size: $fs-base; max-width: 460px; margin: 0 auto $space-4; }

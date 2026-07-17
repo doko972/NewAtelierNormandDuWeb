@@ -1,0 +1,30 @@
+// Variables (polices, tailles, espacements, breakpoints)
+@use 'base/variables' as *;
+
+// Thèmes (couleurs) — chargés avant reset/typography qui les consomment
+@use 'themes/light';
+@use 'themes/dark';
+
+// Base
+@use 'base/reset';
+@use 'base/typography';
+
+// Layouts (créés en Phase 2 suite)
+@use 'layouts/public';
+@use 'layouts/auth';
+@use 'layouts/admin';
+
+// Composants (créés en Phase 2 suite)
+@use 'components/navbar';
+@use 'components/buttons';
+@use 'components/forms';
+@use 'components/cards';
+@use 'components/alerts';
+@use 'components/modal';
+@use 'components/table';
+@use 'components/theme-switcher';
+@use 'components/accessibility';
+@use 'components/sidebar';
+@use 'components/footer';
+@use 'components/home';
+@use 'components/chatbot';

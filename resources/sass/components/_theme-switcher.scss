@@ -1,0 +1,13 @@
+@use '../base/variables' as *;
+
+.theme-switcher {
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-sm;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover { background: var(--surface); }
+}

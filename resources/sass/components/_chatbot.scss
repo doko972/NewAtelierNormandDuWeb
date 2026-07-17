@@ -1,0 +1,133 @@
+@use '../base/variables' as *;
+
+.chatbot-toggle {
+  position: fixed;
+  bottom: $space-3;
+  right: $space-3;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 70;
+  overflow: hidden;
+  transition: transform $transition-fast;
+
+  &:hover { transform: scale(1.05); }
+}
+
+.chatbot-toggle-lottie {
+  width: 52px;
+  height: 52px;
+}
+
+.chatbot-panel {
+  position: fixed;
+  bottom: calc(#{$space-3} + 76px);
+  right: $space-3;
+  width: 360px;
+  max-width: calc(100vw - #{$space-3 * 2});
+  height: 480px;
+  max-height: 70vh;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: $radius-lg;
+  display: flex;
+  flex-direction: column;
+  z-index: 70;
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transform-origin: bottom right;
+  pointer-events: none;
+  transition: opacity $transition-base, transform $transition-base;
+
+  &.is-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+}
+
+.chatbot-header {
+  padding: $space-2 $space-3;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatbot-header b {
+  font-family: $font-display;
+  font-size: $fs-sm;
+}
+
+.chatbot-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: $fs-lg;
+}
+
+.chatbot-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: $space-3;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.chatbot-msg {
+  max-width: 85%;
+  padding: $space-2;
+  border-radius: $radius-md;
+  font-size: $fs-sm;
+  line-height: 1.5;
+}
+
+.chatbot-msg--user {
+  align-self: flex-end;
+  background: var(--copper);
+  color: #2b1204;
+}
+
+.chatbot-msg--assistant {
+  align-self: flex-start;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.chatbot-msg--typing {
+  align-self: flex-start;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.chatbot-form {
+  display: flex;
+  gap: $space-1;
+  padding: $space-2;
+  border-top: 1px solid var(--line);
+}
+
+.chatbot-form input {
+  flex: 1;
+  padding: $space-2;
+  border: 1px solid var(--line);
+  border-radius: $radius-sm;
+  background: var(--bg);
+  color: var(--text);
+  font-size: $fs-sm;
+}
+
+.chatbot-form button {
+  padding: $space-2 $space-3;
+}
