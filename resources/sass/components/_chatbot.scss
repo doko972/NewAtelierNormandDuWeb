@@ -131,3 +131,27 @@
 .chatbot-form button {
   padding: $space-2 $space-3;
 }
+
+@media (max-width: $bp-mobile) {
+  .chatbot-toggle {
+    width: 56px;
+    height: 56px;
+    bottom: $space-2;
+    right: $space-2;
+  }
+
+  .chatbot-toggle-lottie {
+    width: 44px;
+    height: 44px;
+  }
+
+  .chatbot-panel {
+    left: $space-2;
+    right: $space-2;
+    width: auto;
+    max-width: none;
+    bottom: calc(#{$space-2} + 68px);
+    height: 65vh;
+    max-height: 65vh;
+  }
+}

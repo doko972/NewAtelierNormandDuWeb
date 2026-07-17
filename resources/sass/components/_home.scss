@@ -149,3 +149,66 @@
 .cta-final { text-align: center; background: var(--surface); border-radius: $radius-lg; padding: $space-8 $space-4; }
 .cta-final h2 { margin: 0 auto $space-2; max-width: 560px; }
 .cta-final p { color: var(--muted); font-size: $fs-base; max-width: 460px; margin: 0 auto $space-4; }
+
+.hero {
+  @media (max-width: $bp-mobile) {
+    padding: $space-4 $space-2;
+    gap: $space-3;
+  }
+}
+
+.hero h1 {
+  @media (max-width: $bp-tablet) {
+    font-size: $fs-xl;
+  }
+
+  @media (max-width: $bp-mobile) {
+    font-size: 1.65rem;
+  }
+}
+
+.hero .sub {
+  @media (max-width: $bp-mobile) {
+    font-size: $fs-sm;
+  }
+}
+
+.cta-row {
+  @media (max-width: $bp-mobile) {
+    flex-direction: column;
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.stats {
+  @media (max-width: $bp-mobile) {
+    gap: $space-3;
+    flex-wrap: wrap;
+
+    .stat b { font-size: $fs-lg; }
+  }
+}
+
+.schema {
+  @media (max-width: $bp-mobile) {
+    padding: $space-3;
+  }
+}
+
+.node {
+  @media (max-width: $bp-mobile) {
+    gap: $space-1;
+    padding: $space-1 $space-2;
+  }
+}
+
+.node-text b { font-size: $fs-sm; }
+.node-text span {
+  @media (max-width: $bp-mobile) {
+    font-size: 0.7rem;
+  }
+}

@@ -9,7 +9,7 @@
     <a href="{{ route('home') }}" class="navbar-logo">Atelier·Normand·Web</a>
 
     <button class="navbar-burger" aria-expanded="false" aria-controls="navbar-links">
-        ☰
+        <span aria-hidden="true">☰</span>
     </button>
 
     <div class="navbar-links" id="navbar-links">

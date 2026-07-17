@@ -7,6 +7,7 @@
   padding: $space-3 $space-8;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
+  position: relative;
 
   @media (max-width: $bp-tablet) {
     padding: $space-2 $space-3;
@@ -17,6 +18,10 @@
   font-family: $font-display;
   font-weight: 700;
   font-size: $fs-lg;
+
+  @media (max-width: $bp-mobile) {
+    font-size: $fs-base;
+  }
 }
 
 .navbar-links {
@@ -30,13 +35,17 @@
     &.navbar-links--open {
       display: flex;
       flex-direction: column;
+      align-items: stretch;
+      gap: 0;
       position: absolute;
       top: 100%;
       left: 0;
       right: 0;
       background: var(--bg-alt);
       border-bottom: 1px solid var(--line);
-      padding: $space-3;
+      padding: $space-2 $space-3;
+      max-height: calc(100vh - 60px);
+      overflow-y: auto;
     }
   }
 }
@@ -47,9 +56,32 @@
   font-weight: 500;
 
   &:hover, &.is-active { color: var(--text); }
+
+  @media (max-width: $bp-tablet) {
+    padding: $space-2 0;
+    border-bottom: 1px solid var(--line);
+    width: 100%;
+
+    &:last-child { border-bottom: none; }
+  }
 }
 
 .navbar-burger {
   display: none;
+  font-size: $fs-lg;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  padding: 8px;
+
   @media (max-width: $bp-tablet) { display: block; }
+}
+
+.nav-cta {
+  @media (max-width: $bp-tablet) {
+    text-align: center;
+    margin-top: $space-1;
+    padding: $space-2;
+  }
 }
