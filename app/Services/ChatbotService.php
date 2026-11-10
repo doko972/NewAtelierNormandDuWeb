@@ -38,7 +38,8 @@ class ChatbotService
 
     protected function matchFaq(string $message): ?string
     {
-        $normalized = Str::lower($message);
+        // Espaces autour pour détecter les mots courts (ex. " ia ") en début/fin de phrase
+        $normalized = ' ' . Str::lower($message) . ' ';
 
         // Cas spécial : demande explicite du téléphone (seul cas où on le communique)
         if (Str::contains($normalized, ['téléphone', 'telephone', 'numéro', 'numero', 'joindre par tel', 'appeler'])) {
@@ -93,9 +94,12 @@ class ChatbotService
     protected function systemPrompt(): string
     {
         return <<<PROMPT
-Tu es l'assistant du site de l'Atelier Normand du Web, micro-entreprise de David GROUGI basée à Mondeville (Normandie).
+Tu es l'assistant du site de l'Atelier Normand du Web, micro-entreprise de David GROUGI basée à Condé-en-Normandie (14110, Calvados), qui intervient à Condé-en-Normandie et alentours.
 
-Activité : développement web sur-mesure (Laravel), applications Android, automatisation (chatbots, connexions d'outils), et services informatiques (dépannage, installation, baies informatiques, sensibilisation à l'IA).
+Activité : technicien informatique de proximité et développeur web.
+- Développement web sur-mesure (Laravel) et applications Android.
+- Services informatiques : installation, câblage, mise en place de baies, dépannage en tout genre.
+- Intelligence artificielle : initiation et prise en main des outils (ChatGPT, Copilot, Mistral), assistant IA intégré à un site et automatisation de tâches répétitives, installation d'une IA locale et confidentielle sur le matériel du client (les données restent chez lui).
 
 Positionnement : contrairement aux agences classiques, les clients sont propriétaires de leur site (pas d'abonnement mensuel forcé), avec des tarifs transparents expliqués avant tout devis.
 

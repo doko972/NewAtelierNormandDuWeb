@@ -30,17 +30,7 @@ class PageSeeder extends Seeder
 "
             ],
             ['slug' => 'services', 'title_fr' => 'Services', 'title_en' => 'Services', 'order' => 3],
-            ['slug' => 'services/automatisation', 'title_fr' => 'Automatisation', 'title_en' => 'Automation', 'order' => 4],
             ['slug' => 'services/informatique', 'title_fr' => 'Informatique', 'title_en' => 'IT services', 'order' => 5],
-            [
-                'slug' => 'realisations',
-                'title_fr' => 'Réalisations',
-                'title_en' => 'Portfolio',
-                'order' => 6,
-                'body_fr' => "
-<p>Cette section accueillera bientôt les projets livrés : captures d'écran, description, technologies utilisées.</p>
-"
-            ],
             ['slug' => 'contact', 'title_fr' => 'Contact', 'title_en' => 'Contact', 'order' => 7],
             [
                 'slug' => 'mentions-legales',
@@ -52,7 +42,7 @@ class PageSeeder extends Seeder
 <p>Le site Atelier Normand du Web est édité par :<br>
 David GROUGI, micro-entrepreneur<br>
 SIRET : 939 474 755 00013<br>
-Adresse : Rue de Copenhague, 14120 Mondeville, France<br>
+Adresse : route de Vassy, 14110 Condé-en-Normandie, France<br>
 Email : contact@ateliernormandduweb.fr<br>
 Directeur de la publication : David GROUGI</p>
 
@@ -65,7 +55,7 @@ Site web : www.hostinger.fr</p>
 <h2>Le Prestataire</h2>
 <p>David GROUGI, micro-entrepreneur<br>
 SIRET : 939 474 755 00013<br>
-Rue de Copenhague, 14120 Mondeville, France<br>
+route de Vassy, 14110 Condé-en-Normandie, France<br>
 Email : contact@ateliernormandduweb.fr<br>
 Ci-après dénommé \"l'Atelier Normand du Web\" ou \"le Prestataire\".</p>
 "
@@ -76,5 +66,8 @@ Ci-après dénommé \"l'Atelier Normand du Web\" ou \"le Prestataire\".</p>
         foreach ($pages as $page) {
             Page::updateOrCreate(['slug' => $page['slug']], $page + ['is_published' => true]);
         }
+
+        // Page portfolio retirée du site
+        Page::where('slug', 'realisations')->delete();
     }
 }

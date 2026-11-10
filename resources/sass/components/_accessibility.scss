@@ -1,50 +1,453 @@
 @use '../base/variables' as *;
 
+// ============================================================
+// Lien d'évitement « Aller au contenu » (visible au clavier uniquement)
+// ============================================================
+.skip-link {
+  position: fixed;
+  top: $space-1;
+  left: $space-1;
+  z-index: 100;
+  padding: $space-1 $space-2;
+  border-radius: $radius-md;
+  background: var(--copper);
+  color: #2b1204;
+  font-weight: 600;
+  transform: translateY(-200%);
+  transition: transform $transition-fast;
+
+  &:focus { transform: none; }
+}
+
+main:focus { outline: none; }
+
+// ============================================================
+// Bouton d'ouverture
+// ============================================================
 .a11y-toggle {
   position: fixed;
   bottom: $space-3;
   left: $space-3;
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: var(--copper);
-  color: #2b1204;
+  background: var(--blue);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 60;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover { transform: scale(1.06); }
+
+  &:focus-visible {
+    outline: 3px solid var(--copper);
+    outline-offset: 3px;
+  }
+
+  // Pastille : des réglages personnalisés sont actifs
+  &.has-custom::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--copper);
+    border: 2px solid var(--bg);
+  }
 }
 
+// ============================================================
+// Fond assombri (mobile / tablette)
+// ============================================================
+.a11y-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 79;
+  opacity: 0;
+  transition: opacity $transition-base;
+
+  &.is-open { opacity: 1; }
+}
+
+// ============================================================
+// Panneau
+// ============================================================
 .a11y-panel {
   position: fixed;
-  bottom: calc(#{$space-3} + 52px);
   left: $space-3;
+  bottom: calc(#{$space-3} + 64px);
+  width: 360px;
+  max-height: calc(100vh - #{$space-3 * 2} - 64px);
+  max-height: calc(100dvh - #{$space-3 * 2} - 64px);
+  display: flex;
+  flex-direction: column;
   background: var(--bg-alt);
+  color: var(--text);
   border: 1px solid var(--line);
-  border-radius: $radius-lg;
-  padding: $space-3;
-  width: 260px;
-  z-index: 60;
+  border-radius: 12px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+  z-index: 80;
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transform-origin: bottom left;
+  transition: opacity $transition-base, transform $transition-base;
+
+  &.is-open {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.a11y-high-contrast {
-  --text: #ffffff;
-  --bg: #000000;
-  --line: rgba(255, 255, 255, 0.4);
+// display:flex écraserait l'attribut hidden
+.a11y-panel[hidden],
+.a11y-backdrop[hidden],
+.a11y-reading-guide[hidden] {
+  display: none !important;
 }
 
-.a11y-underline-links a { text-decoration: underline; }
+.a11y-handle { display: none; }
+
+.a11y-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-2;
+  padding: $space-3 $space-3 $space-2;
+  border-bottom: 1px solid var(--line);
+}
+
+.a11y-title {
+  font-family: $font-display;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.a11y-subtitle {
+  font-size: $fs-xs;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.a11y-close {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin: -6px -8px 0 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: background-color $transition-fast, color $transition-fast;
+
+  &:hover { background: var(--surface); color: var(--text); }
+}
+
+.a11y-body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: $space-1 $space-3 $space-2;
+}
+
+.a11y-group {
+  padding: $space-2 0;
+
+  & + & { border-top: 1px solid var(--line); }
+}
+
+.a11y-group-title {
+  font-family: $font-mono;
+  font-size: $fs-xs;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: $space-1;
+}
+
+// --- Taille du texte ---
+.a11y-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2;
+  padding: 10px 0;
+}
+
+.a11y-row-label {
+  font-size: $fs-sm;
+  font-weight: 600;
+}
+
+.a11y-stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  overflow: hidden;
+
+  button {
+    width: 44px;
+    height: 40px;
+    font-weight: 700;
+    font-size: $fs-sm;
+    transition: background-color $transition-fast;
+
+    &:hover:not(:disabled) { background: var(--line); }
+    &:disabled { opacity: 0.35; cursor: not-allowed; }
+  }
+
+  output {
+    min-width: 56px;
+    text-align: center;
+    font-family: $font-mono;
+    font-size: $fs-sm;
+  }
+}
+
+// --- Interrupteurs ---
+.a11y-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2;
+  padding: 10px 0;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+}
+
+.a11y-switch-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  b { font-size: $fs-sm; font-weight: 600; }
+  small { font-size: $fs-xs; color: var(--muted); line-height: 1.4; }
+}
+
+.a11y-switch-track {
+  position: relative;
+  flex-shrink: 0;
+  width: 44px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: background-color $transition-fast, border-color $transition-fast;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--muted);
+    transition: transform $transition-fast, background-color $transition-fast;
+  }
+}
+
+.a11y-switch input:checked + .a11y-switch-track {
+  background: var(--blue);
+  border-color: var(--blue);
+
+  &::after {
+    transform: translateX(18px);
+    background: #ffffff;
+  }
+}
+
+.a11y-switch input:focus-visible + .a11y-switch-track {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+// --- Pied du panneau ---
+.a11y-footer {
+  display: flex;
+  gap: $space-1;
+  padding: $space-2 $space-3;
+  border-top: 1px solid var(--line);
+  background: var(--bg-alt);
+
+  .btn { flex: 1; min-height: 44px; }
+}
+
+// Options liées à la souris : inutiles sur écran tactile
+@media (hover: none), (pointer: coarse) {
+  .a11y-pointer-only { display: none; }
+}
+
+// ============================================================
+// Tablette & smartphone : panneau en tiroir depuis le bas
+// ============================================================
+@media (max-width: $bp-tablet) {
+  .a11y-panel {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    max-height: 85vh;
+    max-height: 85dvh;
+    border-radius: 16px 16px 0 0;
+    border-bottom: none;
+    transform: translateY(100%);
+    transform-origin: bottom center;
+
+    &.is-open { transform: translateY(0); }
+  }
+
+  .a11y-handle {
+    display: block;
+    width: 40px;
+    height: 4px;
+    margin: 10px auto 0;
+    border-radius: 999px;
+    background: var(--line);
+  }
+
+  .a11y-header { padding-top: $space-2; }
+
+  .a11y-footer {
+    padding-bottom: calc(#{$space-2} + env(safe-area-inset-bottom));
+  }
+
+  // Empêche la page de défiler derrière le tiroir
+  html.a11y-panel-open { overflow: hidden; }
+}
+
+@media (min-width: #{$bp-tablet + 1px}) {
+  .a11y-backdrop { display: none !important; }
+}
 
 @media (max-width: $bp-mobile) {
   .a11y-toggle {
+    width: 48px;
+    height: 48px;
     left: $space-2;
-    bottom: $space-2;
+    bottom: calc(#{$space-2} + env(safe-area-inset-bottom));
   }
 
-  .a11y-panel {
-    left: $space-2;
-    right: $space-2;
-    width: auto;
-    bottom: calc(#{$space-2} + 60px);
+  .a11y-header,
+  .a11y-body,
+  .a11y-footer {
+    padding-left: $space-2;
+    padding-right: $space-2;
   }
+}
+
+// ============================================================
+// Effets des préférences (classes posées sur <html>)
+// ============================================================
+
+// Contraste élevé — fonctionne quel que soit le thème clair/sombre
+html.a11y-high-contrast {
+  --bg: #000000;
+  --bg-alt: #000000;
+  --surface: #111111;
+  --line: rgba(255, 255, 255, 0.65);
+  --text: #ffffff;
+  --muted: #e6e6e6;
+  --copper: #ffb15c;
+  --copper-dark: #ff9a33;
+  --blue: #8ab8ff;
+  --blue-dim: #5c9aff;
+
+  a:not(.btn) { color: #ffe066; }
+}
+
+// Niveaux de gris (appliqué aux blocs, pas à <html>, pour ne pas casser les éléments fixes)
+html.a11y-grayscale :is(main, .navbar, .footer, .chatbot-toggle, .chatbot-panel) {
+  filter: grayscale(1);
+}
+
+// Espacement du texte (critère WCAG 1.4.12)
+html.a11y-spacing :is(main, .footer) {
+  line-height: 1.8 !important;
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+
+  * { line-height: inherit !important; letter-spacing: inherit !important; word-spacing: inherit !important; }
+  p { margin-bottom: 1.5em; }
+}
+
+// Police lisible
+html.a11y-readable-font body,
+html.a11y-readable-font body *:not(svg):not(path) {
+  font-family: Verdana, Tahoma, 'Segoe UI', Arial, sans-serif !important;
+}
+
+// Alignement à gauche
+html.a11y-align-left main * {
+  text-align: left !important;
+}
+
+// Liens soulignés
+html.a11y-underline-links a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+// Focus renforcé
+html.a11y-strong-focus :focus-visible {
+  outline: 4px solid #ffd400 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 8px #000000 !important;
+}
+
+// Arrêt des animations
+html.a11y-no-motion,
+html.a11y-no-motion *,
+html.a11y-no-motion *::before,
+html.a11y-no-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+// Grand curseur
+html.a11y-big-cursor,
+html.a11y-big-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'%3E%3Cpath d='M4 2l15 11.5-6.6 1 3.9 7.3-2.7 1.4-3.9-7.4L4 20z' fill='%23000' stroke='%23fff' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E") 8 4, auto !important;
+}
+
+// Guide de lecture
+.a11y-reading-guide {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2.75rem;
+  margin-top: -1.375rem;
+  background: rgba(255, 212, 0, 0.12);
+  border-top: 2px solid #ffd400;
+  border-bottom: 2px solid #ffd400;
+  pointer-events: none;
+  z-index: 90;
+  will-change: transform;
+
+  @media (hover: none), (pointer: coarse) { display: none !important; }
 }

@@ -16,13 +16,13 @@
             <div class="service-card">
                 <span class="tag">Professionnel</span>
                 <h3>Site sur-mesure évolutif</h3>
-                <p>Formulaires intelligents, premières automatisations, structure pensée pour grandir avec vous.</p>
+                <p>Formulaires soignés, structure claire et évolutive, pensée pour grandir avec vous.</p>
                 <a href="{{ route('page.show', 'contact') }}">Demander un devis →</a>
             </div>
             <div class="service-card">
                 <span class="tag">Sur-mesure</span>
-                <h3>Application &amp; automatisation avancée</h3>
-                <p>Web, Android, chatbots, automatisations connectées, et accompagnement IT si besoin.</p>
+                <h3>Application &amp; infrastructure</h3>
+                <p>Web, Android et applications métier, avec mise en place et dépannage de votre matériel si besoin.</p>
                 <a href="{{ route('page.show', 'contact') }}">Demander un devis →</a>
             </div>
         </div>
@@ -31,25 +31,53 @@
     <section class="container section">
         <div class="section-header">
             <div class="eyebrow">Détail</div>
-            <h2>Automatisation &amp; informatique</h2>
+            <h2>Infrastructure &amp; dépannage</h2>
         </div>
 
         <div class="compare">
             <div class="compare-col yes">
-                <h3>Automatisation</h3>
+                <h3>Infrastructure &amp; réseau</h3>
                 <ul>
-                    <li><span class="mark">✓</span>Chatbots pour qualifier vos demandes</li>
-                    <li><span class="mark">✓</span>Formulaires intelligents connectés</li>
-                    <li><span class="mark">✓</span>Connexions entre vos outils existants</li>
+                    <li><span class="mark">✓</span>Installation &amp; montage de baies informatiques</li>
+                    <li><span class="mark">✓</span>Câblage et raccordement réseau propre</li>
+                    <li><span class="mark">✓</span>Repérage, tests et mise en service</li>
                 </ul>
             </div>
             <div class="compare-col yes">
-                <h3>Informatique</h3>
+                <h3>Dépannage &amp; matériel</h3>
                 <ul>
-                    <li><span class="mark">✓</span>Dépannage &amp; installation</li>
-                    <li><span class="mark">✓</span>Mise en place de baies informatiques</li>
-                    <li><span class="mark">✓</span>Sensibilisation à l'IA pour vos équipes</li>
+                    <li><span class="mark">✓</span>Dépannage en tout genre (panne, lenteur)</li>
+                    <li><span class="mark">✓</span>Nettoyage &amp; mise à niveau du matériel</li>
+                    <li><span class="mark">✓</span>Conseil et choix de votre équipement</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section" id="ia">
+        <div class="section-header">
+            <div class="eyebrow">Intelligence artificielle</div>
+            <h2>L'IA, concrètement</h2>
+        </div>
+
+        <div class="service-grid">
+            <div class="service-card">
+                <span class="tag">Comprendre</span>
+                <h3>Initiation &amp; prise en main</h3>
+                <p>Séances à domicile ou en entreprise pour apprendre à utiliser ChatGPT, Copilot ou Mistral : rédiger, résumer, traduire, chercher. Bonnes pratiques, limites et précautions avec vos données.</p>
+                <a href="{{ route('page.show', 'contact') }}">Demander un devis →</a>
+            </div>
+            <div class="service-card">
+                <span class="tag">Intégrer</span>
+                <h3>Assistant &amp; automatisations</h3>
+                <p>Un assistant sur votre site qui répond aux questions fréquentes et oriente vers vous. Automatisation de tâches répétitives : tri des emails, préparation de devis, extraction de factures.</p>
+                <a href="{{ route('page.show', 'contact') }}">Demander un devis →</a>
+            </div>
+            <div class="service-card">
+                <span class="tag">Garder la main</span>
+                <h3>IA locale &amp; confidentielle</h3>
+                <p>Installation d'une IA sur votre ordinateur ou serveur : elle fonctionne chez vous, sur vos documents, sans abonnement et sans que vos données sortent de vos murs.</p>
+                <a href="{{ route('page.show', 'contact') }}">Demander un devis →</a>
             </div>
         </div>
     </section>

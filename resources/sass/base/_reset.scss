@@ -11,6 +11,11 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  // Bloque le scroll horizontal au niveau du viewport lui-même. Posée ici (sur
+  // la racine) plutôt que sur `body`, la règle recadre correctement le viewport
+  // pour les éléments position:fixed : le chatbot et le panneau a11y restent
+  // ancrés au bord visible de l'écran sur mobile.
+  overflow-x: hidden;
 }
 
 body {
@@ -20,7 +25,6 @@ body {
   background-color: var(--bg);
   color: var(--text);
   transition: background-color $transition-base, color $transition-base;
-  overflow-x: hidden;
 }
 
 img,

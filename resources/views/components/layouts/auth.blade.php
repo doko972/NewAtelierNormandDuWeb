@@ -21,7 +21,7 @@
     <div class="auth-wrapper">
         <div class="auth-brand">
             <div class="auth-brand-logo">Atelier·Normand·Web</div>
-            <p class="auth-brand-tagline">Des sites qui vous appartiennent. Des automatisations qui travaillent pour vous.</p>
+            <p class="auth-brand-tagline">Des sites qui vous appartiennent. Une informatique qui vous simplifie la vie.</p>
         </div>
         <div class="auth-card">
             <div class="auth-card__header">

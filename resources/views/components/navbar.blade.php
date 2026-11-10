@@ -1,6 +1,6 @@
 @php
     $navPages = \App\Models\Page::where('is_published', true)
-        ->whereIn('slug', ['entreprise/qui-sommes-nous', 'services', 'realisations', 'contact'])
+        ->whereIn('slug', ['services', 'contact'])
         ->orderBy('order')
         ->get();
 @endphp
@@ -17,6 +17,9 @@
             <a href="{{ url($navPage->slug) }}" class="{{ request()->is($navPage->slug) ? 'is-active' : '' }}">
                 {{ app()->getLocale() === 'en' ? $navPage->title_en : $navPage->title_fr }}
             </a>
+            @if ($navPage->slug === 'services')
+                <a href="{{ url('services') }}#ia">{{ app()->getLocale() === 'en' ? 'AI' : 'IA' }}</a>
+            @endif
         @endforeach
 
         <a href="{{ route('lang.switch', app()->getLocale() === 'fr' ? 'en' : 'fr') }}" title="Changer de langue">

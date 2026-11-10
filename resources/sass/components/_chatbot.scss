@@ -29,7 +29,7 @@
   position: fixed;
   bottom: calc(#{$space-3} + 76px);
   right: $space-3;
-  width: 360px;
+  width: 320px;
   max-width: calc(100vw - #{$space-3 * 2});
   height: 480px;
   max-height: 70vh;
@@ -137,7 +137,7 @@
     width: 56px;
     height: 56px;
     bottom: $space-2;
-    right: $space-2;
+    right: $space-3;
   }
 
   .chatbot-toggle-lottie {

@@ -16,7 +16,7 @@ class SettingSeeder extends Seeder
         $settings = [
             ['key' => 'company_name', 'value' => 'Atelier Normand du Web', 'group' => 'general'],
             ['key' => 'siret', 'value' => '939 474 755 00013', 'group' => 'general'],
-            ['key' => 'address', 'value' => 'Rue de Copenhague, 14120 Mondeville, France', 'group' => 'general'],
+            ['key' => 'address', 'value' => 'route de Vassy, 14110 Condé-en-Normandie, France', 'group' => 'general'],
             ['key' => 'contact_email', 'value' => 'contact@ateliernormandduweb.fr', 'group' => 'general'],
             ['key' => 'phone', 'value' => '06 16 60 28 98', 'group' => 'general'], // usage interne uniquement, jamais affiché tel quel côté public
             ['key' => 'theme_default', 'value' => 'dark', 'group' => 'theme'],
