@@ -31,6 +31,14 @@ class PageSeeder extends Seeder
             ],
             ['slug' => 'services', 'title_fr' => 'Services', 'title_en' => 'Services', 'order' => 3],
             ['slug' => 'services/informatique', 'title_fr' => 'Informatique', 'title_en' => 'IT services', 'order' => 5],
+            [
+                'slug' => 'tarifs',
+                'title_fr' => 'Tarifs',
+                'title_en' => 'Pricing',
+                'order' => 4,
+                'meta_title_fr' => 'Tarifs — Atelier Normand du Web, Condé-en-Normandie',
+                'meta_description_fr' => 'Tarifs clairs pour le dépannage informatique, la création de sites web et l\'accompagnement IA à Condé-en-Normandie. Devis gratuit, TVA non applicable.',
+            ],
             ['slug' => 'contact', 'title_fr' => 'Contact', 'title_en' => 'Contact', 'order' => 7],
             [
                 'slug' => 'mentions-legales',

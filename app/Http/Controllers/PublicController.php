@@ -20,6 +20,7 @@ class PublicController extends Controller
 
         $view = match ($slug) {
             'services' => 'public.services',
+            'tarifs' => 'public.tarifs',
             'contact' => 'public.contact',
             'mentions-legales', 'politique-de-confidentialite' => 'public.legal',
             default => 'public.page',

@@ -1,6 +1,6 @@
 @php
     $navPages = \App\Models\Page::where('is_published', true)
-        ->whereIn('slug', ['services', 'contact'])
+        ->whereIn('slug', ['services', 'tarifs', 'contact'])
         ->orderBy('order')
         ->get();
 @endphp

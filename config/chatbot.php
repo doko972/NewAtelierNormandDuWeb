@@ -4,11 +4,11 @@ return [
     'faq' => [
         [
             'keywords' => ['tarif', 'prix', 'coût', 'cout', 'budget', 'devis'],
-            'answer' => "Les tarifs dépendent du projet (site vitrine, application sur-mesure, intervention informatique...). Le plus simple est de décrire votre besoin via le formulaire de contact : vous recevrez un devis clair, sans engagement.",
+            'answer' => "Quelques repères (TVA non applicable, le prix affiché est le prix payé) : dépannage à domicile 50 €/h pour les particuliers, 60 €/h pour les professionnels, site vitrine dès 900 €, initiation à l'IA 50 €/h. Déplacement offert jusqu'à 15 km autour de Condé-en-Normandie. Tous les détails sont sur la page Tarifs, et le devis est gratuit via le formulaire de contact.",
         ],
         [
             'keywords' => ['service', 'proposez', 'faites', 'activité', 'activite'],
-            'answer' => "L'Atelier Normand du Web propose deux grandes familles de prestations : sites web & applications Android sur-mesure, et interventions informatiques (installation, câblage, mise en place de baies, dépannage en tout genre).",
+            'answer' => "L'Atelier Normand du Web propose trois familles de prestations : sites web & applications Android sur-mesure, interventions informatiques (installation, câblage, mise en place de baies, dépannage en tout genre) et accompagnement à l'intelligence artificielle (initiation, assistant, IA locale).",
         ],
         [
             'keywords' => [' ia ', ' ia?', ' ia,', "l'ia", "d'ia", 'intelligence artificielle', 'chatgpt', 'copilot', 'mistral', 'automatis'],
